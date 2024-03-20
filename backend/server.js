@@ -8,7 +8,14 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(
+  {
+     origin: ["https://api-creation.vercel.com"],
+    methods: ["POST", "GET", "PUT"],
+    credentials: true
+  }
+));
+app.use(express.json())
 
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://risabht043:Skt230144@cluster0.i954vcu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
